@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- Main Content -->
+    <div class="page-wrapper">
+      <div class="container">
+        <!-- Title -->  
+        <div class="row heading-bg">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h5 class="txt-dark">about</h5>
+          </div>
+          <!-- Breadcrumb -->
+          <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">home</a></li>
+            <li class="active"><span>about</span></li>
+            </ol>
+          </div>
+          <!-- /Breadcrumb -->
+        </div>
+        <!-- /Title -->
+        <div class="form-actions" style="margin: 25px;">
+          <button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-add"></i> <span><a href="{% url 'add-about' %}">Add About</a></span></button>
+          <div class="clearfix"></div>
+        </div>
+        <!-- Row -->
+        <div class="row">
+            {% for i in about %}
+            <div class="panel panel-default card-view" style="width: 39%;">
+              <a href="{% url 'edit-about' i.id %}"><ion-icon name="create"></ion-icon></a>
+              <a style="margin-left: 13px;" href="{% url 'deleteabout' i.id %}"><ion-icon name="trash"></ion-icon></a>
+              <div class="panel-wrapper collapse in">   
+                <div class="panel-body" style="text-align: center;">
+                    <div class="clearfix"></div>
+                    <div  class="panel-body">
+                      <div id="carousel-example-captions" data-ride="carousel" class="carousel slide mt-40">
+                        <div role="listbox" class="carousel-inner">
+                           <div class="item active">
+                            <img src="{{i.img.url}}" alt="First slide image" width="100%">
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul role="tablist" class="nav nav-pills nav-pills-rounded" id="myTabs_11">
+                      <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="home_tab_11" href="#{{i.id}}home_11">Title</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_11" role="tab" href="#{{i.id}}text" aria-expanded="false">Text</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_12" role="tab" href="#{{i.id}}date" aria-expanded="false">Date</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_11" role="tab" href="#{{i.id}}category" aria-expanded="false">Category</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_11" role="tab" href="#{{i.id}}manytomany" aria-expanded="false">Blogtext</a></li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent_11" style="margin-top:10px;">
+                      <div  id="{{i.id}}home_11" class="tab-pane fade active in" role="tabpanel">
+                        <p>{{i.title}}</p>
+                      </div>
+                      <div  id="{{i.id}}text" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.text}}</p>
+                      </div>
+                      <div  id="{{i.id}}date" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.date}}</p>
+                      </div>
+                      <div  id="{{i.id}}category" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.category}}</p>
+                      </div>
+                      <div  id="{{i.id}}manytomany" class="tab-pane fade" role="tabpanel">
+                        {% for l in i.abouttext.all %}
+                        <p>{{l}}</p>
+                        {% endfor %}
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+        {% endblock %}

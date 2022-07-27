@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- Main Content -->
+    <div class="page-wrapper">
+      <div class="container">
+        <!-- Title -->  
+        <div class="row heading-bg">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h5 class="txt-dark">category</h5>
+          </div>
+          <!-- Breadcrumb -->
+          <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">home</a></li>
+            <li class="active"><span>category</span></li>
+            </ol>
+          </div>
+          <!-- /Breadcrumb -->
+        </div>
+        <!-- /Title -->
+        <div class="form-actions" style="margin: 25px;">
+          <button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-add"></i> <span><a href="{% url 'add-category' %}">Add category</a></span></button>
+          <div class="clearfix"></div>
+        </div>
+					<!-- Bordered Table -->
+					<div class="col-sm-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="pull-left">
+									<h6 class="panel-title txt-dark">Category Page</h6>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                  <p class="text-muted">Add Category <code>table-striped</code> in table tag.</p>
+									<div class="table-wrap mt-40">
+                    <div class="table-responsive">
+                      <table class="table table-striped mb-0">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in category %}
+                        <tr>
+                        <td>{{i.name}}</td>
+
+
+                        <td class="text-nowrap"><a href="{% url 'edit-category' i.id %}" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></td>
+                        <td><a href="{% url 'deletecategory' i.id %}" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i> </a></td>
+                        </tr>
+											  
+
+                        {% endfor %} 
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+						</div>
+					</div>
+					<!-- /Bordered Table -->
+      
+        {% endblock %}

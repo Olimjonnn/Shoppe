@@ -1,0 +1,284 @@
+<head>
+    <script src="https://kit.fontawesome.com/17f0db7e39.js" crossorigin="anonymous"></script>
+  </head>
+  
+    <div class="login-container"><!--login-container is the style class-->
+      
+  
+      <form class="login-form" action="{% url 'login' %}" method="post"><!--login-form is the style class-->
+        {% csrf_token %}
+        
+        <h2>LOGIN</h2><!--login text-->
+        
+        <!--form inputs start here-->
+        
+        <input type="text" name="username" placeholder="Username" size="30" required/><br><!--email address-->
+  
+        <input type="password" name="password" placeholder="Password" size="30" required/><br><!--password-->
+        
+        <input type="submit" name="submit" value="SUBMIT"/><!--submit button-->
+        
+        
+    
+      </form>
+  
+    </div>
+    <style>
+        * {
+    margin: 0;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  
+  body {
+      height: auto;
+      width: auto;
+      background-color: #D2F172;
+    }
+    
+    /*define variables for our form*/
+    
+    :root {
+      --min-padding: 10px;
+      --max-padding: 50px;
+      --min-width: 50%;
+      --max-width: 100%;
+      --mid-width: 60%;
+      --outline: 2px solid green;
+      --outline-color: green;
+      --background-form: white;
+      --background-main: black;
+      --link-color: rgb(60, 60, 247);
+      --border-radius: 7px;
+      --border: 2px solid black;
+      --border-form: 1px solid black;
+      --transition: 0.3s;
+      --box-sizing: border-box;
+      --text-align: center;
+      --margin-top-max: 150px;
+      --margin-top-max-tablet: 125px;
+      --margin-top-other: 95px;
+      --margin-top-mid: 25px;
+      --margin-top-min: 10px;
+      --margin-bottom-min: 5px;
+      --margin-bottom-max: 6px;
+      --margin-bottom-percent: 9%;
+      --font-family: 'Montserrat', sans-serif;
+      --font-weight-1: 800;
+      --font-weight-2: 400;
+      --font-size-min: 13px;
+      --font-size-max: 20px;
+      --font-size-mid: 15px;
+      --zero: 0;
+      --auto: auto;
+      --none: none;
+    }
+  
+  /* follow_btn */
+  
+  .follow_btn {
+    background-color: white;
+    width: 20%;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 15px;
+  }
+  
+  .follow_btn:hover {
+    box-shadow: 1px 1px 31px -12px rgba(255,255,255,0.75);
+  -webkit-box-shadow: 1px 1px 31px -12px rgba(255,255,255,0.75);
+  -moz-box-shadow: 1px 1px 31px -12px rgba(255,255,255,0.75);
+  }
+  
+  /* follow_btn link styling */
+  
+  .follow_btn a {
+    font-family: var(--font-family);
+    font-weight: bold;
+    text-transform: capitalize; 
+  }
+  
+  /* follow_btn icon styling */
+  
+  .follow_btn i {
+    color: var(--link-color);
+    margin: auto 5px;
+  }
+  
+  .follow_btn i:hover {
+    color: var(--background-main);
+  }
+  
+  /*login container styling*/
+  
+    .login-container {
+      margin-left: var(--auto);
+      margin-right: var(--auto);
+      margin-top: var(--margin-top-other);
+      width: 70%;
+    }
+  
+  /*form styling*/
+  
+    .login-form {
+      background: var(--background-form);
+      border-radius: var(--border-radius);
+      border: var(--border-form);
+      width: var(--min-width);
+      padding: var(--max-padding);
+      margin-left: var(--auto);
+      margin-right: var(--auto);
+      font-family: var(--font-family);
+      }
+    
+  /*form input styling*/
+  
+    input {
+      margin: var(--auto);
+      margin-top: var(--margin-top-mid);
+      font-size: var(--font-size-min);
+      width: var(--max-width);
+      padding: var(--min-padding);
+      box-sizing: var(--box-sizing);
+      border-radius: var(--border-radius);
+      border: var(--border);
+      margin-bottom: var(--margin-bottom-max);
+      transition: var(--transition);
+      font-family: var(--font-family);
+    }
+  
+    input[type=submit] {
+      background-color: var(--background-main);
+      color: var(--background-form);
+      font-weight: var(--font-weight-1);
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+  
+    /*input hover effect*/
+  
+    input[type=email]:focus, input[type=password]:focus {
+      outline: var(--none);
+      border: var(--outline);
+    }
+  
+  
+    input[type=submit]:hover {
+      outline: var(--none);
+      background-color: var(--background-form);
+      border-color: var(--outline-color);
+      color: var(--background-main);
+    }
+  
+  /*link styling*/
+  
+    a:link {
+      text-decoration: var(--none);
+      color: var(--link-color);
+    }
+  
+    a:visited {
+      color: var(--link-color);
+    }
+  
+    a:hover {
+      color: var(--background-main);
+    }
+  
+  /*text styling*/
+  
+    p {
+      text-align: var(--text-align);
+      margin-top: var(--margin-top-min);
+      margin-bottom: var(--margin-bottom-min);
+      font-weight: var(--font-weight-2);
+    }
+  
+    h2 {
+      text-align: var(--text-align);
+      margin-top: var(--margin-top-min);
+      font-weight: var(--font-weight-1);
+      margin-bottom: var(--zero);
+    }
+  
+    .text {
+      text-align: var(--text-align);
+      margin-left: var(--auto);
+      margin-right: var(--auto)
+    }
+  
+  
+    /*for tablets*/
+    @media (min-width: 481px) and (max-width: 844px) {
+      input {
+        width: var(--max-width);
+      }
+  
+      .login-container {
+        margin-top: var(--margin-top-other);
+      }
+  
+      .login-form {
+        width: var(--mid-width);
+      }
+    }
+  
+    /*for mobile phones*/
+  
+    @media (min-width: 320px) and (max-width:480px) {
+      .login-from {
+        width: var(--max-width);
+      }
+  
+      .login-container {
+        margin-top: var(--margin-top-other);
+        width: var(--max-width);
+      }
+  
+      p {
+        font-size: var(--font-size-mid);
+      }
+    }
+  
+  /*samsung galaxy fold*/
+  
+    @media (min-width: 280px) and (max-width: 653px) {
+      .login-container {
+        width: var(--max-width);
+      }
+  
+      .login-form {
+        width: var(--mid-width);
+    }
+  
+      p {
+        font-size: var(--font-size-min);
+      }
+    }
+  
+  /*iphones*/
+    
+    @media (min-width: 365px) and (max-width: 667px) {
+      .login-container {
+        width: var(--max-width);
+        margin-top: var(--margin-top-other)
+      }
+    }
+  
+  /*other(larger screens)*/
+  
+    @media (min-width: 912px) and (max-width: 1368px) {
+      .login-container {
+        width: var(--mid-width);
+        margin-top: var(--margin-top-other);
+      }
+  
+      p {
+        font-size: var(--font-size);
+      }
+    }
+    </style>
+  </body>
+  

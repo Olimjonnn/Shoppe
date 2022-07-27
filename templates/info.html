@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- Main Content -->
+    <div class="page-wrapper">
+      <div class="container">
+        <!-- Title -->  
+        <div class="row heading-bg">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h5 class="txt-dark">Info</h5>
+          </div>
+          <!-- Breadcrumb -->
+          <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">home</a></li>
+            <li class="active"><span>Info</span></li>
+            </ol>
+          </div>
+          <!-- /Breadcrumb -->
+        </div>
+        <!-- /Title -->
+        <div class="form-actions" style="margin: 25px;">
+          <button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-add"></i> <span><a href="{% url 'add-info' %}">Add Info</a></span></button>
+          <div class="clearfix"></div>
+        </div>
+        <!-- Row -->
+        <div class="row">
+            {% for i in info %}
+            <div class="panel panel-default card-view" style="width: 39%;">
+                <div class="panel-wrapper collapse in">   
+                    <a href="{% url 'edit-info' i.id %}"><ion-icon name="create"></ion-icon></a>
+                    <a style="margin: 10px;" href="{% url 'deletecountry' i.id %}" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i> </a>
+                    <div class="panel-body" style="text-align: center;">
+                        <div class="clearfix"></div>
+                        <div  class="panel-body">
+                            <div id="carousel-example-captions" data-ride="carousel" class="carousel slide mt-40">
+                                <div role="listbox" class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="{{i.logo.url}}" alt="First slide image" width="100%">
+                                    </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul role="tablist" class="nav nav-pills nav-pills-rounded" id="myTabs_11">
+                      <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="home_tab_11" href="#{{i.id}}home_11">Instagram</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_11" role="tab" href="#{{i.id}}tw_link" aria-expanded="false">Twitter</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_12" role="tab" href="#{{i.id}}fa_link" aria-expanded="false">Facebook</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_11" role="tab" href="#{{i.id}}in_link" aria-expanded="false">Linked In</a></li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent_11" style="margin-top:10px;">
+                      <div  id="{{i.id}}home_11" class="tab-pane fade active in" role="tabpanel">
+                        <p>{{i.insta_link}}</p>
+                      </div>
+                      <div  id="{{i.id}}tw_link" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.tw_link}}</p>
+                      </div>
+                      <div  id="{{i.id}}fa_link" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.fa_link}}</p>
+                      </div>
+                      <div  id="{{i.id}}category" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.in_link}}</p>
+                      </div>
+
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+        {% endblock %}

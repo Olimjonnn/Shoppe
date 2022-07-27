@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- Main Content -->
+    <div class="page-wrapper">
+      <div class="container">
+        <!-- Title -->  
+        <div class="row heading-bg">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h5 class="txt-dark">comment</h5>
+          </div>
+          <!-- Breadcrumb -->
+          <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">home</a></li>
+            <li class="active"><span>comment</span></li>
+            </ol>
+          </div>
+          <!-- /Breadcrumb -->
+        </div>
+        <!-- /Title -->
+        <!-- Row -->
+        <div class="row">
+            {% for i in comment %}
+            <div class="panel panel-default card-view" style="width: 39%;">
+              <div class="panel-wrapper collapse in">   
+                <a style="margin: 10px;" href="{% url 'deletecomment' i.id %}" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i> </a>
+                <div class="panel-body" style="text-align: center;">
+                    <div class="clearfix"></div>
+
+
+                    <ul role="tablist" class="nav nav-pills nav-pills-rounded" id="myTabs_11">
+                      <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="home_tab_11" href="#{{i.id}}home_11">Name</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_11" role="tab" href="#{{i.id}}text" aria-expanded="false">Text</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_12" role="tab" href="#{{i.id}}data" aria-expanded="false">Date</a></li>
+                      <li role="presentation" class=""><a  data-toggle="tab" id="profile_tab_11" role="tab" href="#{{i.id}}replay_comment" aria-expanded="false">Replay comment</a></li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent_11" style="margin-top:10px;">
+                      <div  id="{{i.id}}home_11" class="tab-pane fade active in" role="tabpanel">
+                        <p>{{i.name}}</p>
+                      </div>
+                      <div  id="{{i.id}}text" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.text}}</p>
+                      </div>
+                      <div  id="{{i.id}}data" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.data}}</p>
+                      </div>
+                      <div  id="{{i.id}}replay_comment" class="tab-pane fade" role="tabpanel">
+                        <p>{{i.replay_comment}}</p>
+                      </div>
+
+
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+        {% endblock %}

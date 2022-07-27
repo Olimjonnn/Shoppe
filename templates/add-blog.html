@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+			<!-- Main Content -->
+			<div class="page-wrapper">
+			<div class="container">
+				<!-- Title -->	
+					<div class="row heading-bg">
+						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+						  <h5 class="txt-dark">add-blog</h5>
+						</div>
+						<!-- Breadcrumb -->
+						<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+						  <ol class="breadcrumb">
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li class="active"><span>add-blog</span></li>
+						  </ol>
+						</div>
+						<!-- /Breadcrumb -->
+					</div>
+					<!-- /Title -->
+					<!-- Row -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default card-view">
+								<div class="panel-wrapper collapse in">
+									<div class="panel-body">
+										<div class="form-wrap">
+											<form action="{% url 'add-blog' %}" method="post" enctype="multipart/form-data">
+												 {% csrf_token %}
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>blog blog</h6>
+												<hr class="light-grey-hr"/>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">blog Title</label>
+									 						<input type="text" name="title" class="form-control" placeholder="Title">
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Text</label>
+															<input type="text" name="text" class="form-control" placeholder="Text">
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!-- Row -->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Category</label>
+															<select class="form-control" name="category" data-placeholder="Choose a Category" tabindex="1">
+																{% for i in category %}
+																{% if i.id == blog.category.id %}
+																<option selected name="" value="{{i.id}}">{{i.name}}</option>
+																{% else %}
+																<option name="" value="{{i.id}}">{{i.name}}</option>
+																{% endif %}
+																{% endfor %}
+															</select>
+														</div>
+													</div>
+												</div>
+												<!--/row-->
+												{% comment %} <div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Title</label>
+															<div class="input-group">
+																<div class="input-group-addon"><i class="form-control"></i></div>
+																<input type="text" class="form-control" id="exampleInputuname">
+															</div>
+														</div>
+													</div> {% endcomment %}
+													<!--/span-->
+													<!--/span-->
+												</div>
+												<div class="seprator-block"></div>
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-collection-image mr-10"></i>upload image</h6>
+												<hr class="light-grey-hr"/>
+												
+												<input type="file" name="img" class="upload">
+											
+											
+												<div class="seprator-block"></div>
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i>blogtexts</h6>
+												<hr class="light-grey-hr"/>
+												
+												<select class="form-control" name="blogtext" data-placeholder="Choose a Category" multiple tabindex="1">
+													{% for ii in blogtext %}
+													{% if ii.id in blog.blogtext.objects.all %}
+													<option selected name="" value="{{ii.id}}">{{ii.text}}</option>
+													{% else %}
+													<option  name="" value="{{ii.id}}">{{ii.text}}</option>														
+													</option>
+													{% endif %}
+													{% endfor %}
+												</select>
+												<div class="form-actions">
+													<button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
+													<div class="clearfix"></div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Row -->
+				</div>
+{% endblock %}

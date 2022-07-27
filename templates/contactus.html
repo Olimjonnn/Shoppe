@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- Main Content -->
+    <div class="page-wrapper">
+      <div class="container">
+        <!-- Title -->  
+        <div class="row heading-bg">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h5 class="txt-dark">contactus</h5>
+          </div>
+          <!-- Breadcrumb -->
+          <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+            <li><a href="{% url 'home' %}">home</a></li>
+            <li class="active"><span>contactus</span></li>
+            </ol>
+          </div>
+          <!-- /Breadcrumb -->
+        </div>
+        <!-- /Title -->
+					<!-- Bordered Table -->
+					<div class="col-sm-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="pull-left">
+									<h6 class="panel-title txt-dark">contactus Page</h6>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-wrapper collapse in">
+                <div class="panel-body">
+									<div class="table-wrap mt-40">
+                    <div class="table-responsive">
+                      <table class="table table-striped mb-0">
+                        <thead>
+                          <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Delete</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in contactus %}
+                        <tr>
+                        <td>{{i.first_name}}</td>
+                        <td>{{i.last_name}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.subject}}</td>
+                        <td>{{i.message}}</td>
+                        <td><a href="{% url 'deletecategory' i.id %}" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i> </a></td>
+                        </tr>
+											  
+
+                        {% endfor %} 
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+						</div>
+					</div>
+					<!-- /Bordered Table -->
+      
+        {% endblock %}

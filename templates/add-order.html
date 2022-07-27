@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+			<!-- Main Content -->
+			<div class="page-wrapper">
+			<div class="container">
+				<!-- Title -->	
+					<div class="row heading-bg">
+						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+						  <h5 class="txt-dark">add-order</h5>
+						</div>
+						<!-- Breadcrumb -->
+						<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+						  <ol class="breadcrumb">
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li class="active"><span>add-order</span></li>
+						  </ol>
+						</div>
+						<!-- /Breadcrumb -->
+					</div>
+					<!-- /Title -->
+					<!-- Row -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default card-view">
+								<div class="panel-wrapper collapse in">
+									<div class="panel-body">
+										<div class="form-wrap">
+											<form action="{% url 'add-order' %}" method="post">
+												 {% csrf_token %}
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>Order</h6>
+												<hr class="light-grey-hr"/>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Email</label>
+									 						<input type="text" name="email" class="form-control" placeholder="Email">
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Status</label>
+															<input type="number" name="status" class="form-control" placeholder="Status">
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Delivery Address</label>
+															<input type="text" name="delivery_address" class="form-control" placeholder="Delivery Address">
+														</div>
+													</div>
+													<div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Contact</label>
+															<input type="number" name="contact" class="form-control" placeholder="Contact">
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!-- Row -->
+												<div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+															<label class="control-label mb-10">Delivery Options</label>
+															<select class="form-control" name="delivery_options" data-placeholder="Choose a Delivery Options" tabindex="1">
+																{% for i in delivery_options %}
+																{% if i.id == order.delivery_options.id %}
+																<option selected name="" value="{{i.id}}">{{i.delivery}}</option>
+																{% else %}
+																<option name="" value="{{i.id}}">{{i.delivery}}</option>
+																{% endif %}
+																{% endfor %}
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Product</label>
+															<select class="form-control" name="delivery_options" data-placeholder="Choose a Product" tabindex="1">
+                                                                {% for i in product %}
+																{% if i.id == order.product.id %}
+																<option selected name="" value="{{i.id}}">{{i.name}}</option>
+																{% else %}
+																<option name="" value="{{i.id}}">{{i.name}}</option>
+																{% endif %}
+																{% endfor %}
+															</select>
+														</div>
+													</div>
+												</div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label mb-10">Quantity</label>
+                                                        <input type="number" name="quantity" class="form-control" placeholder="Quantity">
+                                                    </div>
+                                                </div>
+												<!--/row-->
+												{% comment %} <div class="row">
+													<div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Title</label>
+															<div class="input-group">
+																<div class="input-group-addon"><i class="form-control"></i></div>
+																<input type="text" class="form-control" id="exampleInputuname">
+															</div>
+														</div>
+													</div> {% endcomment %}
+													<!--/span-->
+													<!--/span-->
+												</div>
+												
+
+												<div class="form-actions">
+													<button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span>save</span></button>
+													<div class="clearfix"></div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Row -->
+				</div>
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+			<!-- Main Content -->
+			<div class="page-wrapper">
+			<div class="container">
+				<!-- Title -->	
+					<div class="row heading-bg">
+						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+						  <h5 class="txt-dark">add-products</h5>
+						</div>
+						<!-- Breadcrumb -->
+						<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+						  <ol class="breadcrumb">
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li class="active"><span>add-products</span></li>
+						  </ol>
+						</div>
+						<!-- /Breadcrumb -->
+					</div>
+					<!-- /Title -->
+					<!-- Row -->
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default card-view">
+								<div class="panel-wrapper collapse in">
+									<div class="panel-body">
+										<div class="form-wrap">
+											<form action="{% url 'add-product' %}" method='post'>
+												{% csrf_token %}
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h6>
+												<hr class="light-grey-hr"/>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Product Name</label>
+															<input type="text" name="name" class="form-control" placeholder="Name">
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Text</label>
+															<input type="text" name="text" class="form-control" placeholder="Text">
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!-- Row -->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Add Category</label>
+															<select class="form-control" name="category" data-placeholder="Choose a Category" tabindex="1">
+																{% for i in category %}
+																{% if i.id == product.category.id %}
+																<option selected name="" value="{{i.id}}">{{i.name}}</option>
+																{% else %}
+																<option name="" value="{{i.id}}">{{i.name}}</option>
+																{% endif %}
+																{% endfor %}
+															</select>
+														</div>
+													</div>
+												</div>
+												<!--/row-->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Price</label>
+															<div class="input-group">
+																<div class="input-group-addon"><i class="ti-money"></i></div>
+																<input type="number" class="form-control" name="price" placeholder="Price">
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label mb-10">Discount</label>
+															<div class="input-group">
+																<div class="input-group-addon"><i class="ti-cut"></i></div>
+																<input type="number" class="form-control" name="discount" placeholder="%">
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<div class="seprator-block"></div>
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-collection-image mr-10"></i>upload image</h6>
+												<hr class="light-grey-hr"/>
+												<select class="form-control" name="images" data-placeholder="Choose a Category" multiple tabindex="1">
+													{% for ii in images %}
+													<option selected name="" value="{{ii.id}}" style="background-image:url('{{ii.image.url}}');background-repeat: no-repeat; height: 200px; width: 270px; background-size: cover; margin-bottom: 10px; color: rgb(51, 255, 0);">
+													</option>
+													{% endfor %}
+												</select>
+												<div class="seprator-block"></div>
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-comment-text mr-10"></i>Product Description</h6>
+												<hr class="light-grey-hr"/>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<textarea class="form-control" name="description" rows="4"></textarea>
+														</div>
+													</div>
+												</div>
+												<div class="seprator-block"></div>
+												<h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i>aditional information</h6>
+												<hr class="light-grey-hr"/>
+												
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<input type="text" name="weight" class="form-control" placeholder="Weight">
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<input type="text" name="dimentions" class="form-control" placeholder="Dimentions">
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<input type="text" name="colours" class="form-control" placeholder="Color">
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<input type="text" name="material" class="form-control" placeholder="Material">
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<input type="text" name="SKU" class="form-control" placeholder="SKU">
+														</div>
+													</div>
+												</div>
+												<div class="form-actions">
+													<button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-add"></i> <span>save</span></button>
+													<div class="clearfix"></div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Row -->
+				</div>
+{% endblock %}
